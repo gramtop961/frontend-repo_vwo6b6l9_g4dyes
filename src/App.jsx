@@ -1,28 +1,35 @@
-import { useState } from 'react'
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import About from './components/About';
+import Projects from './components/Projects';
+import Links from './components/Links';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
-    </div>
-  )
-}
+    <div className="min-h-screen bg-black text-neutral-200 selection:bg-neutral-100 selection:text-black">
+      {/* subtle grainy overlay */}
+      <div
+        aria-hidden
+        className="pointer-events-none fixed inset-0 opacity-[0.08] mix-blend-soft-light"
+        style={{
+          backgroundImage:
+            'repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 2px), repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 2px)'
+        }}
+      />
 
-export default App
+      <Navbar />
+      <main className="scroll-smooth">
+        <Hero />
+        <About />
+        <Projects />
+        <Links />
+      </main>
+      <footer className="mx-auto max-w-6xl px-4 pb-10">
+        <div className="h-px w-full bg-neutral-900" />
+        <p className="mt-6 text-xs font-mono uppercase tracking-widest text-neutral-500">
+          © {new Date().getFullYear()} — Built with minimal surface area.
+        </p>
+      </footer>
+    </div>
+  );
+}
